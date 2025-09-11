@@ -6,13 +6,16 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.jwt.Jwt;
+
+import org.springframework.lang.NonNull;
+
 import java.util.Collection;
-import java.util.List;
 import java.util.stream.Collectors;
  
 public class JwtAuthConverter implements Converter<Jwt, Collection<GrantedAuthority>> {
+    
     @Override
-    public Collection convert(Jwt jwt) {
+    public Collection<GrantedAuthority> convert(@NonNull Jwt jwt) {
         var roles = jwt.getClaimAsStringList("groups");
         for (String role : roles) {
             System.out.println("Role from JWT: " + role);
