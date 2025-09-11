@@ -20,9 +20,10 @@ public class SecurityConfig {
         jwtConverter.setJwtGrantedAuthoritiesConverter(new JwtAuthConverter());
         
  
+        //the role always has to be capatalized
         http
           .authorizeHttpRequests(authorize -> authorize
-            .requestMatchers("/demo").hasRole("default-roles-sau")
+            .requestMatchers("/demo").hasRole("DEFAULT-ROLES-SAU")
             .requestMatchers("/admin/**").hasRole("admin")
             .anyRequest().authenticated()
           )
