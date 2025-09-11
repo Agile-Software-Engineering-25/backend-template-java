@@ -18,11 +18,10 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         JwtAuthenticationConverter jwtConverter = new JwtAuthenticationConverter();
         jwtConverter.setJwtGrantedAuthoritiesConverter(new JwtAuthConverter());
-        
  
         http
           .authorizeHttpRequests(authorize -> authorize
-            .requestMatchers("/demo").hasRole("default-roles-sau")
+            .requestMatchers("/demo/**").hasRole("default-roles-sau")
             .requestMatchers("/admin/**").hasRole("admin")
             .anyRequest().authenticated()
           )
