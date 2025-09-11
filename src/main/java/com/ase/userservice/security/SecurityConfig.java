@@ -22,7 +22,7 @@ public class SecurityConfig {
  
         http
           .authorizeHttpRequests(authorize -> authorize
-            .requestMatchers("/demo/**").hasRole("defaultrole")
+            .requestMatchers("/demo").hasRole("default-roles-sau")
             .requestMatchers("/admin/**").hasRole("admin")
             .anyRequest().authenticated()
           )

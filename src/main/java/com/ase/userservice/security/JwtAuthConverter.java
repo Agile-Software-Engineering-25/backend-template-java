@@ -13,11 +13,10 @@ import java.util.stream.Collectors;
 public class JwtAuthConverter implements Converter<Jwt, Collection<GrantedAuthority>> {
     @Override
     public Collection convert(Jwt jwt) {
-        var realmAccess = jwt.getClaimAsMap("realm_access");
-        if (realmAccess == null || realmAccess.isEmpty()) {
-            return List.of();
+        var roles = jwt.getClaimAsStringList("groups");
+        for (String role : roles) {
+            System.out.println("Role from JWT: " + role);
         }
-        var roles = (List<String>) realmAccess.get("roles");
         return roles.stream()
                 .map(role -> new SimpleGrantedAuthority("ROLE_" + role.toUpperCase()))
                 .collect(Collectors.toList());
