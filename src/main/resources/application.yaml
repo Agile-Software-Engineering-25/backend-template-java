@@ -18,9 +18,9 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:8080/realms/sau
-          jwk-set-uri: http://localhost:8080/realms/sau/protocol/openid-connect/certs
+          issuer-uri: https://keycloak.sau-portal.de/realms/sau
+          jwk-set-uri: https://keycloak.sau-portal.de/realms/sau/protocol/openid-connect/certs
 server:
-  port: 8081
+  port: 8080
   error:
     include-message: always
