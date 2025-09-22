@@ -8,7 +8,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.lang.NonNull;
 import java.util.Collection;
-import java.util.List;
 import java.util.stream.Collectors;
 
 public class JwtAuthConverter implements Converter<Jwt, Collection<GrantedAuthority>> {
@@ -18,8 +17,8 @@ public class JwtAuthConverter implements Converter<Jwt, Collection<GrantedAuthor
         var roles = jwt.getClaimAsStringList("groups");
 
         // you can check the roles here if you want to
-        // for (String role : roles) {
-        // System.out.println("Role from JWT: " + role);
+        //for (String role : roles) {
+        //System.out.println("Role from JWT: " + role);
         // }
         return roles.stream()
                 .map(role -> new SimpleGrantedAuthority("ROLE_" + role.toUpperCase()))
