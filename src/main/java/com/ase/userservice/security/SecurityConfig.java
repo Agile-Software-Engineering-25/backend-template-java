@@ -20,8 +20,9 @@ public class SecurityConfig {
         jwtConverter.setJwtGrantedAuthoritiesConverter(new JwtAuthConverter());
         
  
-        //the role always has to be capatalized
+        //the role always has to be capatilized
         http
+          .csrf(csrf -> csrf.disable()) // Disable CSRF for API endpoints isnt needed for our purpose since we are not using cookies for auth
           .authorizeHttpRequests(authorize -> authorize
             .requestMatchers("/demo").hasRole("DEFAULT-ROLES-SAU")
             .requestMatchers("/admin/**").hasRole("admin")
