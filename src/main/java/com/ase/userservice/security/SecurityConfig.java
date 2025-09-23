@@ -19,7 +19,7 @@ public class SecurityConfig {
         jwtConverter.setJwtGrantedAuthoritiesConverter(new JwtAuthConverter());
         
  
-        //the role always has to be capatilized
+        //the role always has to be capitalized
         http
           .csrf(csrf -> csrf.disable()) // Disable CSRF for API endpoints isnt needed for our purpose since we are not using cookies for auth
           .authorizeHttpRequests(authorize -> authorize
