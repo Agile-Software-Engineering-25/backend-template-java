@@ -1,5 +1,4 @@
-// // based on this tutorial xdd: https://www.javacodegeeks.com/2025/07/spring-boot-keycloak-role-based-authorization.html
-
+// based on this tutorial: https://www.javacodegeeks.com/2025/07/spring-boot-keycloak-role-based-authorization.html
 
 package com.ase.userservice.security;
 
@@ -26,11 +25,9 @@ public class SecurityConfig {
           .authorizeHttpRequests(authorize -> authorize
             .requestMatchers("/demo").hasRole("DEFAULT-ROLES-SAU")
             .requestMatchers("/admin/**").hasRole("admin")
-            .anyRequest().authenticated()
-          )
+            .anyRequest().authenticated())
           .oauth2ResourceServer(oauth2 -> oauth2
-            .jwt(jwt -> jwt.jwtAuthenticationConverter(jwtConverter))
-          );
+            .jwt(jwt -> jwt.jwtAuthenticationConverter(jwtConverter)));
         return http.build();
     }
 }
